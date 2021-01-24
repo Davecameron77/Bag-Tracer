@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Bag_Tracer.ViewModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Bag_Tracer.View
 {
@@ -20,6 +11,7 @@ namespace Bag_Tracer.View
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowVm();
         }
     }
 }

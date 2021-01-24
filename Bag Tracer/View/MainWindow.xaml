@@ -11,31 +11,11 @@
         WindowState="Maximized">
 
     <Window.Resources>
-        <Style TargetType="{x:Type GridSplitter}" x:Key="HorizontalGridSplitter">
-            <Setter Property="Width" Value="5" />
-            <Setter Property="Background" Value="Gray" />
-            <Setter Property="Margin" Value="5, 0" />
-            <Setter Property="VerticalAlignment" Value="Stretch" />
-        </Style>
-        <Style TargetType="{x:Type GridSplitter}" x:Key="VerticalGridSplitter">
-            <Setter Property="Width" Value="5" />
-            <Setter Property="Background" Value="Gray" />
-            <Setter Property="Margin" Value="0, 5" />
-            <Setter Property="HorizontalAlignment" Value="Stretch" />
-        </Style>
-        <Style TargetType="{x:Type TextBlock}">
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Margin" Value="5, 1" />
-        </Style>
-        <Style TargetType="{x:Type TextBox}">
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Margin" Value="5, 1" />
-        </Style>
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Margin" Value="2" />
-            <Setter Property="Padding" Value="10, 5" />
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/View/Styles/AppStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
 
     <Grid>
@@ -90,7 +70,9 @@
 
             <Button Grid.Row="0"
                     Grid.Column="0">
-                <Image Source="/Resources/Images/pane_left.png" Width="20" Height="20"/>
+                <Image Source="/Resources/Images/pane_left.png" 
+                       Width="20" 
+                       Height="20"/>
             </Button>
             <Button Grid.Row="0"
                     Grid.Column="2"
@@ -109,215 +91,12 @@
 
         <!--#region  Main Content-->
         <TabControl Grid.Row="2"
-                    Grid.Column="0">
-            <TabItem Header="New Bag Trace">
+                    Grid.Column="0"
+                    ItemsSource="{Binding MainWindowTabs, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                    SelectedItem="{Binding ActiveTab, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
-                <Grid Grid.Row="2"
-                      Grid.Column="0">
-
-                    <!--#region Grid Definitions-->
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <!--Left pane-->
-                        <ColumnDefinition Width="300" />
-                        <ColumnDefinition Width="Auto" />
-                        <!--Content-->
-                        <ColumnDefinition Width="*" />
-                        <!--Right pane-->
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="300" />
-                    </Grid.ColumnDefinitions>
-
-                    <!--#endregion-->
-
-                    <Grid Grid.Row="0"
-                          Grid.Column="0">
-
-                    </Grid>
-
-                    <GridSplitter Grid.Row="0"
-                                  Grid.Column="1"
-                                  Style="{StaticResource VerticalGridSplitter}"/>
-
-                    <ScrollViewer Grid.Row="0"
-                                  Grid.Column="2"
-                                  HorizontalScrollBarVisibility="Auto"
-                                  VerticalScrollBarVisibility="Auto"/>
-
-                    <GridSplitter Grid.Row="0"
-                                  Grid.Column="3"
-                                  Style="{StaticResource VerticalGridSplitter}"/>
-
-                    <!--#region Side Panel-->
-
-                    <Grid Grid.Row="0"
-                          Grid.Column="4">
-
-                        <!--#region Grid Definitions-->
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <!--#endregion-->
-
-                        <!--#region Query Params-->
-
-                        <Grid Grid.Row="0"
-                              Grid.Column="0">
-
-                            <!--#region Grid definitions-->
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <!--#endregion-->
-
-                            <TextBlock Grid.Row="0"
-                                       Grid.Column="0"
-                                       Grid.ColumnSpan="4"
-                                       Text="Bag Trace Parameters" />
-
-                            <TextBlock Grid.Row="1"
-                                       Grid.Column="0"
-                                       Grid.ColumnSpan="1"
-                                       Text="LPN:" />
-                            <TextBox Grid.Row="1"
-                                     Grid.Column="1"
-                                     Grid.ColumnSpan="3" />
-
-                            <TextBlock Grid.Row="2"
-                                       Grid.Column="0"
-                                       Grid.ColumnSpan="1"
-                                       Text="PID:" />
-                            <TextBox Grid.Row="2"
-                                     Grid.Column="1"
-                                     Grid.ColumnSpan="3" />
-
-                            <Button Grid.Row="3"
-                                    Grid.Column="2"
-                                    Content="Clear" />
-                            <Button Grid.Row="3"
-                                    Grid.Column="3"
-                                    Content="Query" />
-                        </Grid>
-
-                        <!--#endregion-->
-
-                        <GridSplitter Grid.Row="4"
-                                      Grid.Column="0"
-                                      Grid.ColumnSpan="4"
-                                      Style="{StaticResource VerticalGridSplitter}"/>
-
-                        <!--#region Package Reports-->
-                        <Grid Grid.Row="5"
-                              Grid.Column="0">
-
-                            <!--#region Grid definitions-->
-                            <Grid.RowDefinitions>
-                                <!--Header-->
-                                <RowDefinition Height="Auto" />
-                                <!--Content-->
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <!--Content-->
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <!--#endregion-->
-
-                            <!--Header-->
-                            <TextBlock Grid.Row="0"
-                                       Grid.Column="0"
-                                       Text="Package Reports" />
-                            <!--Content-->
-                            <DataGrid Grid.Row="1"
-                                      Grid.Column="0"
-                                      MinHeight="300">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Eventts"
-                                                        MinWidth="75"
-                                                        Width="Auto" />
-                                    <DataGridTextColumn Header="PackageReport Type"
-                                                        MinWidth="125"
-                                                        Width="Auto"/>
-                                    <DataGridTextColumn Header="ISC ID"
-                                                        MinWidth="50"
-                                                        Width="*"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-                        <!--#endregion-->
-
-                        <GridSplitter Grid.Row="6"
-                                      Grid.Column="0"
-                                      Grid.ColumnSpan="4"
-                                      Style="{StaticResource VerticalGridSplitter}"/>
-
-                        <!--#region BagEvents-->
-                        <Grid Grid.Row="7"
-                              Grid.Column="0">
-
-                            <!--#region Grid definitions-->
-                            <Grid.RowDefinitions>
-                                <!--Header-->
-                                <RowDefinition Height="Auto" />
-                                <!--Content-->
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <!--Content-->
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <!--#endregion-->
-
-                            <!--Header-->
-                            <TextBlock Grid.Row="0"
-                                       Grid.Column="0"
-                                       Text="Baggage Events" />
-                            <!--Content-->
-                            <DataGrid Grid.Row="1"
-                                      Grid.Column="0"
-                                      MinHeight="300">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Eventts"
-                                                        MinWidth="75"
-                                                        Width="Auto" />
-                                    <DataGridTextColumn Header="Route Segment ID"
-                                                        MinWidth="150"
-                                                        Width="*"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
-                        <!--#endregion-->
-
-                    </Grid>
-
-                    <!--#endregion-->
-                </Grid>
-                <!--#endregion-->
-
-            </TabItem>
-            <TabItem Header="+" />
         </TabControl>
+        
+        <!--#endregion-->
     </Grid>
 </Window>

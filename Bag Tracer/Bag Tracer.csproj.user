@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="View\Fragments\BagTracePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\Fragments\CloseableTabHeader.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -21,10 +24,16 @@
     <Page Update="Resources\Images\pane_right.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\Fragments\BagTracePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Fragments\CloseableTabHeader.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Styles\AppStyles.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

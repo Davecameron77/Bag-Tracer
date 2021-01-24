@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Bag_Tracer.View.Styles">
+    <Style TargetType="{x:Type GridSplitter}" x:Key="HorizontalGridSplitter">
+        <Setter Property="Width" Value="5" />
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Margin" Value="5, 0" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+    </Style>
+    <Style TargetType="{x:Type GridSplitter}" x:Key="VerticalGridSplitter">
+        <Setter Property="Width" Value="5" />
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Margin" Value="0, 5" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+    </Style>
+    <Style TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="5, 1" />
+    </Style>
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="Margin" Value="5, 1" />
+    </Style>
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Padding" Value="10, 5" />
+    </Style>
+</ResourceDictionary>
