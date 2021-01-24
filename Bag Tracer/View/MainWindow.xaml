@@ -83,6 +83,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
             <!--#endregion-->
@@ -92,8 +93,16 @@
                 <Image Source="/Resources/Images/pane_left.png" Width="20" Height="20"/>
             </Button>
             <Button Grid.Row="0"
-                    Grid.Column="2">
-                <Image Source="/Resources/Images/pane_right.png" Width="20" Height="20" />
+                    Grid.Column="2"
+                    Padding="3,5"
+                    Command="{Binding NewTabCommand}">
+                <TextBlock FontSize="20">➕</TextBlock>
+            </Button>
+            <Button Grid.Row="0"
+                    Grid.Column="3">
+                <Image Source="/Resources/Images/pane_right.png" 
+                       Width="20" 
+                       Height="20" />
             </Button>
         </Grid>
         <!--#endregion-->
